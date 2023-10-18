@@ -3,8 +3,9 @@ name: sunny-today-team-git-action
 on:
   push:
     branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
@@ -12,10 +13,10 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Build the Docker image for my project
-      run: docker build  --tag newgreet/sunny-today-repository:latest .
+      run: docker build  --tag newgreet/sunny-today-server:latest .
 
     - name: Login to Docker
       run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
     - name: Push the Docker
-      run: docker push newgreet/sunny-today-repository:latest
+      run: docker push newgreet/sunny-today-server:latest
