@@ -1,10 +1,10 @@
-name: Git Action Test Flow
+name: sunny-today-team-git-action
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
 jobs:
 
@@ -21,4 +21,4 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
     - name: Push the Docker
-      run: docker push newgreet/sunny-today-repository:latest
+      run: docker push newgreet/suuny-today-repository:latest
