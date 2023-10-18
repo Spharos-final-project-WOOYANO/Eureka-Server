@@ -15,6 +15,6 @@ public class TestController{
 
     @GetMapping("test2")
     public String test2(){
-        return "this is test!!";git
+        return "this is test!!";
     }
 }
