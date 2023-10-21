@@ -7,7 +7,7 @@ COPY src src
 RUN chmod +x ./gradlew
 RUN ./gradlew bootJAR
 
-FROM openjdk17 AS builder
+FROM openjdk17
 COPY --from=builder build/libs/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app.jar"]
