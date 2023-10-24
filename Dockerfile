@@ -1,4 +1,4 @@
-FROM openjdk17
+FROM openjdk17 AS builder
 COPY gradlew .
 COPY gradle gradle
 COPY build.gradle .
