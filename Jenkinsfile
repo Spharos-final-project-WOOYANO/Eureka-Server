@@ -10,7 +10,7 @@ pipeline {
             steps{
                 sh '''
                     pwd
-                    echo "helloWorld!"
+                    echo "hello, World!"
                     cd server
                     chmod +x ./gradlew
                     ./gradlew build -x test
