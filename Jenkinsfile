@@ -19,7 +19,7 @@ pipeline {
         stage('DockerSize'){
             steps {
                 sh '''
-                    docker stop Eureka-Server || true
+                    docker stop Eureka-Server /bin/bash || true
                     docker rm Eureka-Server || true
                     docker rmi Eureka-Server-Img || true
                     docker build -t Eureka-Server-Img:latest .
