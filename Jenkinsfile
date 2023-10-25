@@ -11,7 +11,6 @@ pipeline {
                 sh '''
                     pwd
                     echo "hello, World!"
-                    cd server
                     chmod +x ./gradlew
                     ./gradlew build -x test
                 '''
