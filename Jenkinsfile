@@ -19,7 +19,6 @@ pipeline {
         stage('DockerSize'){
             steps {
                 sh '''
-                    cd server
                     docker stop Eureka-Server || true
                     docker rm Eureka-Server || true
                     docker rmi Eureka-Server-Img || true
