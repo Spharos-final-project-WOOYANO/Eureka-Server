@@ -9,6 +9,8 @@ pipeline {
         stage('Build'){
             steps{
                 sh '''
+                    pwd
+                    echo "helloWorld!"
                     cd server
                     chmod +x ./gradlew
                     ./gradlew build -x test
@@ -18,7 +20,6 @@ pipeline {
         stage('DockerSize'){
             steps {
                 sh '''
-                    pwd
                     cd server
                     docker stop Eureka-Server || true
                     docker rm Eureka-Server || true
