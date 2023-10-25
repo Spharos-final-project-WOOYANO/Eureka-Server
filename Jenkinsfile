@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Check') {
             steps {
-                git branch: 'develop',credentialsId:'shinyoung-go', url:'https://github.com/Spharos-final-project-WOOYANO/Eureka-Server'
+                git branch: 'develop',credentialsId:'jenkins-github-access-token', url:'https://github.com/Spharos-final-project-WOOYANO/Eureka-Server'
             }
         }
         stage('Build'){
