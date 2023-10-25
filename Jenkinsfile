@@ -18,6 +18,7 @@ pipeline {
         stage('DockerSize'){
             steps {
                 sh '''
+                    pwd
                     cd server
                     docker stop Eureka-Server || true
                     docker rm Eureka-Server || true
