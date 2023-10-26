@@ -9,15 +9,12 @@ pipeline {
         stage('Build'){
             steps{
                 script {
-
-                   def excludedFile = 'application.yml'
                     
-                    sh '''
-                    find . -not -name ${excludedFile}
-                    cat excludedFile
-                    pwd
-                    chmod +x ./gradlew
-                    ./gradlew build -x test -PexcludeFile=${env.EXCLUDE_FILE}
+                    sh 
+                    '''
+                        pwd
+                        chmod +x ./gradlew
+                        ./gradlew build -x test excludeFile='application.yml'
                     '''
                     
                 }
