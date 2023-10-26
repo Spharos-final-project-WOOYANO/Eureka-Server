@@ -11,7 +11,7 @@ pipeline {
                 script {
 
                     def excludedFile = 'application.yml'
-                    def fileList = sh(script: "find . -type f -not -name ${excludedFile}", returnStdout: true).trim()
+                    def fileList = sh(script: "find -type f -not -name ${excludedFile}", returnStdout: true).trim()
 
                     // 파일 목록을 환경 변수로 설정
                     env.EXCLUDE_FILE = excludedFile
