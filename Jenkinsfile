@@ -15,7 +15,7 @@ pipeline {
                     env.EXCLUDE_FILE = excludedFile
                 sh '''
                     chmod +x ./gradlew
-                    ./gradlew build -x test -PexcludeFile=${excludedFile}
+                    ./gradlew build -x test -PexcludeFile=${env.EXCLUDE_FILE}
                 '''
             }
         }
