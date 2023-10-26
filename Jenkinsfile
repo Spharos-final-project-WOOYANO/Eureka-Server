@@ -12,6 +12,8 @@ pipeline {
                     pwd
                     echo "hello, World!"
                     chmod +x ./gradlew
+                    def excludedFile = 'application.yml'
+                        def fileList = sh(script: "find . -type f -not -name ${excludedFile}", returnStdout: true).trim()
                     ./gradlew build -x test
                 '''
             }
