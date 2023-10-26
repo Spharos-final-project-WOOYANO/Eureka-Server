@@ -9,9 +9,7 @@ pipeline {
         stage('Build'){
             steps{
                 script {
-                    
-                    sh 
-                    '''
+                    sh '''
                         pwd
                         chmod +x ./gradlew
                         ./gradlew build -x test excludeFile='application.yml'
