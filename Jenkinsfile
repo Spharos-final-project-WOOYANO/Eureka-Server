@@ -8,9 +8,12 @@ pipeline {
         }
         stage('Build'){
             steps{
-                sh '''
                     def excludedFile = 'application.yml'
                     def fileList = sh(script: "find . -type f -not -name ${excludedFile}", returnStdout: true).trim()
+
+                    // 파일 목록을 환경 변수로 설정
+                    env.EXCLUDE_FILE = excludedFile
+                sh '''
                     chmod +x ./gradlew
                     ./gradlew build -x test -PexcludeFile=${excludedFile}
                 '''
