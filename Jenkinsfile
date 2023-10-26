@@ -11,8 +11,8 @@ pipeline {
                 sh '''
                     def excludedFile = 'application.yml'
                     def fileList = sh(script: "find . -type f -not -name ${excludedFile}", returnStdout: true).trim()
-                    sh "chmod +x ./gradlew"
-                    sh "./gradlew build -x test -PexcludeFile=${excludedFile}"
+                    chmod +x ./gradlew
+                    ./gradlew build -x test -PexcludeFile=${excludedFile}
                 '''
             }
         }
