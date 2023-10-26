@@ -9,9 +9,6 @@ pipeline {
         stage('Build'){
             steps{
                 sh '''
-                    pwd
-                    echo "hello, World!"
-                    chmod +x ./gradlew
                     def excludedFile = 'application.yml'
                     def fileList = sh(script: "find . -type f -not -name ${excludedFile}", returnStdout: true).trim()
                     sh "chmod +x ./gradlew"
