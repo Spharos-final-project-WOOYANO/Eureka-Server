@@ -19,16 +19,16 @@ pipeline {
         stage('DockerSize'){
             steps {
                 sh '''
-                    docker stop Eureka-Server /bin/bash || true
-                    docker rm Eureka-Server || true
-                    docker rmi Eureka-Server-Img || true
-                    docker build -t Eureka-Server-Img:latest .
+                    docker stop eureka-server || true
+                    docker rm eureka-server || true
+                    docker rmi eureka-server-img || true
+                    docker build -t eureka-server-img:latest .
                 '''
             }
         }
         stage('Deploy'){
             steps{
-                sh 'docker run -d --name Eureka-Server -p 8080:8000 Eureka-Server-Img'
+                sh 'docker run -d --name eureka-server -p 8080:8000 eureka-server-img'
             }
         }
     }
