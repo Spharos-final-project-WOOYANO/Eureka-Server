@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Check') {
             steps {
-                git branch: 'develop',credentialsId:'git-hook-PAT', url:'https://github.com/Spharos-final-project-WOOYANO/Eureka-Server'
+                git branch: 'develop',credentialsId:'shinyoung-go', url:'https://github.com/Spharos-final-project-WOOYANO/Eureka-Server'
             }
         }
         stage('Build'){
