@@ -18,7 +18,7 @@ pipeline {
         stage('DockerSize') {
             steps {
                 sh '''
-                    docker server || true
+                    docker stop server || true
                     docker rm server || true
                     docker rmi test/server || true
                     docker build -t test/server .
