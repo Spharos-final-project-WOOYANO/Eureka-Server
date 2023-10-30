@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh '''
                     pwd
-		    cd c\:Wooyano-BE/server
+		    cd /Wooyano-BE/server
                     ./gradlew build
                 '''
             }
