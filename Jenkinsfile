@@ -10,6 +10,7 @@ pipeline {
             steps {
                 sh '''
                     pwd
+		    chmod +x ./gradlew
                     ./gradlew build
                 '''
             }
