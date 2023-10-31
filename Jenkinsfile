@@ -32,10 +32,7 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh '''
-                ls -al /usr/bin/docker
-                ls -al /var/run/
-                ls -al /var/run/docker.sock
-                ls -al /var/jenkins_home/workspace/test/
+                ls -al /var/jenkins_home/workspace/test/build/libs/
                 docker run -d --name eureka-server -p 8761:8000 eureka-server-img
                 '''
             }
