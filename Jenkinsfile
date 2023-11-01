@@ -14,6 +14,7 @@ pipeline {
                         pwd
                         chmod +x ./gradlew
                         ./gradlew build
+			ls -al /var/
                     '''
                     
                 }
@@ -23,6 +24,7 @@ pipeline {
         stage('Deploy'){
             steps {
                 sh '''
+			ls -al /var/
                     docker stop eureka-server || true
                     docker rm eureka-server || true
                     docker rmi eureka-server-img || true
