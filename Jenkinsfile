@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                sh 'docker run --network spharos-network --name eureka-server -p 8761:8761 eureka-server-img'
+                sh 'docker run --network spharos-network --name eureka-server -d -p 8761:8761 eureka-server-img'
             }
         }
     }
