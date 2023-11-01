@@ -28,7 +28,6 @@ pipeline {
                     docker rm eureka-server || true
                     docker rmi server-img || true
                     docker build --tag server-img:latest .
-		    docker ps
                 '''
 		}
 
@@ -37,9 +36,7 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh '''
-		pwd
 		docker run --network spharos-network -d --name eureka-server server-img:latest
-  		docker ps
   		'''
             }
         }
