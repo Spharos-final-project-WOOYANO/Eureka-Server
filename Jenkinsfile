@@ -37,6 +37,7 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh '''
+		pwd
 		docker run --network spharos-network -d --name eureka-server server-img:latest
   		docker ps
   		'''
