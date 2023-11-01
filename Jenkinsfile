@@ -27,7 +27,7 @@ pipeline {
                     docker stop eureka-server || true
                     docker rm eureka-server || true
                     docker rmi server-img || true
-                    docker build -t server-img:latest .
+                    docker buildx -t server-img:latest .
                 '''
 		}
 
