@@ -26,6 +26,7 @@ pipeline {
                     docker rm eureka-server || true
                     docker rmi eureka-server-img || true
                     docker build -t eureka-server-img:latest .
+
                 '''
             }
         }
@@ -36,3 +37,4 @@ pipeline {
         }
     }
 }
+
