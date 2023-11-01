@@ -21,12 +21,16 @@ pipeline {
         }
         stage('DockerSize'){
             steps {
+	    	script {
+		
                 sh '''
                     docker stop eureka-server || true
                     docker rm eureka-server || true
                     docker rmi server-img || true
                     docker build -t server-img:latest .
                 '''
+		}
+
             }
         }
         stage('Deploy'){
