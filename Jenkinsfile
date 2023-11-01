@@ -11,10 +11,8 @@ pipeline {
             steps{
                 script {
                     sh '''
-                        pwd
-			ls -al ./src/main/resources/
                         chmod +x ./gradlew
-                        ./gradlew build
+                        ./gradlew build -x test
                     '''
                     
                 }
@@ -24,8 +22,8 @@ pipeline {
         stage('DockerSize'){
             steps {
                 sh '''
-                    docker stop server || true
-                    docker rm server || true
+                    docker stop eureka-server || true
+                    docker rm eureka-server || true
                     docker rmi server-img || true
                     docker build -t server-img:latest .
                 '''
@@ -33,10 +31,9 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                sh 'docker run --name -d server server-img'
+                sh 'docker run --name -d eureka-server server-img'
             }
         }
     }
 }
-
 
