@@ -22,17 +22,17 @@ pipeline {
         stage('DockerSize'){
             steps {
                 sh '''
-                    docker stop server || true
-                    docker rm server || true
-                    docker rmi server-img || true
-                    docker build -t server-img:latest .
+                    docker stop eureka-server || true
+                    docker rm eureka-server || true
+                    docker rmi eureka-server-img || true
+                    docker build -t eureka-server-img:latest .
+
                 '''
             }
         }
         stage('Deploy'){
             steps{
-                sh 'docker run -d --name server server-img'
-
+                sh 'docker run --network spharos-network -d --name eureka-server -p 8761:8761 eureka-server-img'
             }
         }
     }
