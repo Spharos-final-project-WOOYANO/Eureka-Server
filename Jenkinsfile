@@ -1,40 +1,42 @@
 pipeline {
-  agent any
-  stages {
-    stage('Hello') {
-      steps {
-        echo "Hello"
-      }
-    }
-    stage('Build') {
+    agent any
+    stages {
+        stage('Check') {
             steps {
-		sh '''
-			pwd
-			chmod +x ./gradlew
-			./gradlew build -x test
-		'''
+                git branch: 'develop',credentialsId:'0-shingo', url:'https://github.com/Spharos-final-project-WOOYANO/Eureka-Server'
             }
         }
-        stage('DockerSize') {
+
+        stage('Build'){
+            steps{
+                script {
+                    sh '''
+                        pwd
+			ls -al ./src/main/resources/
+                        chmod +x ./gradlew
+                        ./gradlew build
+                    '''
+                    
+                }
+                    
+            }
+        }
+        stage('DockerSize'){
             steps {
                 sh '''
-		    ls -l /var
-		    exit
-      		    ls -l /var
                     docker stop server || true
                     docker rm server || true
                     docker rmi server-img || true
-                    docker build -t server-img .
+                    docker build -t server-img:latest .
                 '''
             }
         }
-        stage('Deploy') {
-            steps {
-                sh '''
-				exit
-				docker run -d --name ssgpointapp -p 8000:8000 ssgpoint_be
-					'''
+        stage('Deploy'){
+            steps{
+                sh 'docker run --name -d server server-img'
             }
         }
-  }
+    }
 }
+
+
