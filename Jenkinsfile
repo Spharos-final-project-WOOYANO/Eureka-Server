@@ -8,17 +8,19 @@ pipeline {
     }
     stage('Build') {
             steps {
-				sh '''
-					pwd
-					chmod +x ./gradlew
-					./gradlew build -x test
-				'''
+		sh '''
+			pwd
+			chmod +x ./gradlew
+			./gradlew build -x test
+		'''
             }
         }
         stage('DockerSize') {
             steps {
                 sh '''
-					exit
+		    ls -l /var
+		    exit
+      		    ls -l /var
                     docker stop server || true
                     docker rm server || true
                     docker rmi server-img || true
