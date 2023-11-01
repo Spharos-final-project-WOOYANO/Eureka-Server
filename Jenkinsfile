@@ -28,7 +28,7 @@ pipeline {
                     docker rm eureka-server || true
                     docker rmi server-img || true
                     docker build --tag server-img:latest .
-		    docker images
+		    docker ps
                 '''
 		}
 
