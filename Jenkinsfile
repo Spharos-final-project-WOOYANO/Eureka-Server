@@ -31,11 +31,7 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                sh '''
-                ls -al /var/jenkins_home/workspace/test/build/libs
-                docker images
-                docker run -d --name eureka-server -p 8761:8761 eureka-server-img
-                '''
+                sh 'docker run --network spharos-network -d --name eureka-server -p 8761:8761 eureka-server-img'
             }
         }
     }
