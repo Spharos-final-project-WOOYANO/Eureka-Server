@@ -24,8 +24,8 @@ pipeline {
                 script {
 
                     sh '''
-                        docker stop eureka-server || true
-                        docker rm eureka-server || true
+                        docker stop server || true
+                        docker rm server || true
                         docker rmi server-img || true
                         docker build --tag server-img:latest .
                     '''
@@ -36,7 +36,7 @@ pipeline {
         stage('Deploy'){
             steps{
                  sh '''
-                    docker run --network spharos-network --restart=always -d -p 8761:8761 --name eureka-server server-img:latest
+                    docker run --network spharos-network --restart=always -d -p 8761:8761 --name server server-img:latest
                     '''
             }
         }
