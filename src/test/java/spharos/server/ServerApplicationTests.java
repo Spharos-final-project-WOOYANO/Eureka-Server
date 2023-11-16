@@ -1,4 +1,4 @@
-package shparos.server;
+package spharos.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
